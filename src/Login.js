@@ -1,7 +1,18 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from 'react-router-dom';
 import './Login.css';
 function Login() {
+    const[ email, setEmail] = useState('');
+    const[ password, setPassword] = useState('');
+
+    const signIn = e =>{
+        e.preventDefault();
+        //firebase thing happens here
+    }
+    const register = e => {
+        e.preventDefault();
+        // firebase things happens here too   
+    }
     return (
         <div className='login'>
             <Link to='/'>    
@@ -11,11 +22,19 @@ function Login() {
                 <h1>Sign-in</h1>
                 <form>
                     <h5>E-mail</h5>
-                    <input type = 'text'/>
+                    <input type = 'text' value={email} onChange={e =>setEmail(e.target.value) } />
 
                     <h5>Password</h5>
-                    <input type ='password' />
+                    <input type ='password'  value ={password} onChange={e => setPassword(e.target.value)} />
+                    <button type ='submit' onClick={signIn} className='login__signInButton'>Sign in</button>
                 </form>
+                <p>
+                    By singing-in you agree to  Amazon Clone
+                    Condition's of use & sale. Please 
+                    see our Privacy notice, our cookie Notice
+                    and our Intrest-based ads.
+                </p>
+                <button onClick={register} className='login__registerButton'>Create your Amazon account</button>
             </div>
         </div>
     )
